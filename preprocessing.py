@@ -270,14 +270,14 @@ def _add_dependency(instances,result,FORMAT="stanford"):
                     try:
                         r_lemma,r_trace, r_index = m.group('lemma'), m.group('trace'), m.group('index')
                     except AttributeError:
-                        raise Exception("There was an Attribute Error")
+                        print >> log, "There was an Attribute Error"
 
                     if r_index != 'null':
                         #print >> sys.stderr, line
                         try:
                             instances[i].addDependency( rel, l_index, r_index )
                         except IndexError:
-                            raise Exception("There was an index error")
+                            print >> log, "There was an index error"
                     if r_trace is not None:
                         instances[i].addTrace( rel, l_index, r_trace )                      
                 
